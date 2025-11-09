@@ -1,0 +1,127 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "mixtape": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mixtape",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js",
+              "src/assets/plugins/greensock/TweenMax.min.js",
+              "src/assets/plugins/greensock/TimelineMax.min.js",
+              "src/assets/plugins/scrollmagic/ScrollMagic.min.js",
+              "src/assets/plugins/greensock/animation.gsap.min.js",
+              "src/assets/plugins/greensock/ScrollToPlugin.min.js",
+              "src/assets/plugins/easing/easing.js",
+              "src/assets/plugins/progressbar/progressbar.min.js",
+              "src/assets/plugins/parallax-js-master/parallax.min.js",
+              "src/assets/plugins/jPlayer/jquery.jplayer.min.js",
+              "src/assets/plugins/jPlayer/jplayer.playlist.min.js",
+              "src/assets/js/custom.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "mixtape:build:production"
+            },
+            "development": {
+              "buildTarget": "mixtape:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js",
+              "src/assets/plugins/greensock/TweenMax.min.js",
+              "src/assets/plugins/greensock/TimelineMax.min.js",
+              "src/assets/plugins/scrollmagic/ScrollMagic.min.js",
+              "src/assets/plugins/greensock/animation.gsap.min.js",
+              "src/assets/plugins/greensock/ScrollToPlugin.min.js",
+              "src/assets/plugins/easing/easing.js",
+              "src/assets/plugins/progressbar/progressbar.min.js",
+              "src/assets/plugins/parallax-js-master/parallax.min.js",
+              "src/assets/plugins/jPlayer/jquery.jplayer.min.js",
+              "src/assets/plugins/jPlayer/jplayer.playlist.min.js",
+              "src/assets/js/custom.js"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

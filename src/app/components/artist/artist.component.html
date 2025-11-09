@@ -1,0 +1,91 @@
+<!-- Artist Section -->
+<div class="artist-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Artist Image -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="artist-image text-center">
+          <img 
+            [src]="artist?.imageUrl" [alt]="artist?.name"
+            class="img-fluid rounded shadow-lg">
+        </div>
+      </div>
+
+      <!-- Artist Info -->
+      <div class="col-lg-6">
+        <div class="artist-info">
+          <h2 class="artist-name">{{ artist?.name }}</h2>
+          <p class="artist-genre text-muted">{{ artist?.genre }}</p>
+          <p class="artist-bio" *ngIf="artist?.bio">{{ artist?.bio }}</p>
+          
+          <!-- Artist Stats -->
+          <div class="artist-stats d-flex gap-4 mt-3">
+            <div class="stat-item text-center">
+              <div class="stat-number fw-bold">{{ artist?.albumsCount }}</div>
+              <div class="stat-label">Albums</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-number fw-bold">{{ artist?.concertsCount }}</div>
+              <div class="stat-label">Concerts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured Album Section -->
+<div class="featured-album position-relative text-white py-5">
+  <!-- Background Image -->
+  <div 
+    class="featured-background position-absolute top-0 start-0 w-100 h-100" 
+    [ngStyle]="{'background-image': 'url(' + (artist?.imageUrl || '/assets/images/samara.jpg') + ')', 
+                'background-size': 'cover',
+                'background-position': 'center',
+                'opacity': 0.25}">
+  </div>
+
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6">
+        <div class="section-title-container mb-4">
+          <h3 class="text-uppercase">{{ artist?.name }}</h3>
+          <h5 class="text-secondary">{{ artist?.genre }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <!-- Album Cover -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="featured-album-cover position-relative">
+          <img 
+            [src]="artist?.imageUrl || '/assets/images/featured_album.jpg'" 
+            alt="Album cover"
+            class="img-fluid rounded shadow-lg">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded"></div>
+        </div>
+      </div>
+
+      <!-- Album Player -->
+      <div class="col-md-6">
+        <div class="featured-album-player bg-dark bg-opacity-75 p-4 rounded shadow-lg">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <div class="fw-bold fs-5">{{ artist?.name }}</div>
+              <div class="text-muted">{{ artist?.genre }}</div>
+            </div>
+            <a href="#" class="btn btn-sm btn-outline-light">Buy on iTunes</a>
+          </div>
+
+          <!-- Player (you can hook into ngx-audio-player or HTML5 audio) -->
+          <audio controls class="w-100">
+            <source src="/assets/files/bensound-betterdays.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

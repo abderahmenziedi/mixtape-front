@@ -1,0 +1,47 @@
+<section class="vh-100 d-flex align-items-center justify-content-center register-bg">
+    <div class="card shadow-lg p-4 register-card">
+      <h3 class="text-center mb-4 text-light fw-bold">Créer un compte</h3>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+        <div class="mb-3">
+          <label for="fullName" class="form-label text-light">Nom complet</label>
+          <input id="fullName" type="text" formControlName="fullName" class="form-control register-input" placeholder="Ex: Wael Ghribi">
+          <div *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid" class="text-danger small">
+            Nom obligatoire
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="email" class="form-label text-light">Adresse email</label>
+          <input id="email" type="email" formControlName="email" class="form-control register-input" placeholder="exemple@gmail.com">
+          <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="text-danger small">
+            Email invalide
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="password" class="form-label text-light">Mot de passe</label>
+          <input id="password" type="password" formControlName="password" class="form-control register-input" placeholder="********">
+        </div>
+  
+        <div class="mb-3">
+          <label for="rePassword" class="form-label text-light">Confirmer le mot de passe</label>
+          <input id="rePassword" type="password" formControlName="rePassword" class="form-control register-input" placeholder="********">
+        </div>
+  
+        <div class="text-center mt-4">
+          <button type="submit" class="btn register-btn w-100" [disabled]="loading">
+            {{ loading ? 'Création...' : 'Créer un compte' }}
+          </button>
+        </div>
+  
+        <div *ngIf="successMessage" class="alert alert-success mt-3 text-center">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3 text-center">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </section>
+  
+  
+  
+  

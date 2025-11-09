@@ -1,0 +1,40 @@
+<!-- Artists Section -->
+<div class="artists">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section_title_container text-center mb-5">
+          <div class="section_subtitle">Our Talent</div>
+          <div class="section_title"><h1 style="color: white;">Featured Artists</h1></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Artist Card -->
+      <div class="col-xl-3 col-md-6 mb-4" *ngFor="let artist of artists">
+        <div class="artist-card">
+          <div class="artist-image">
+            <img [src]="artist.imageUrl" [alt]="artist.name">
+          </div>
+          <div class="artist-info">
+            <h3 class="artist-name">{{ artist.name }}</h3>
+            <p class="artist-genre">{{ artist.genre }}</p>
+            <p class="artist-bio">{{ artist.bio }}</p>
+            <div class="artist-stats">
+              <span class="stat-item">
+                <strong>{{ artist.albumsCount }}</strong> Albums
+              </span>
+              <span class="stat-item">
+                <strong>{{ artist.concertsCount }}</strong> Concerts
+              </span>
+            </div>
+            <div class="artist-actions">
+              <button class="btn btn-primary" (click)="viewArtist(artist.id)">View Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
